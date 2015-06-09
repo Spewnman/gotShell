@@ -9,6 +9,7 @@ Currently:
 - Requires a DIV with "gotShell" class to be the container for the Shell.
 
 FUTURE VERSIONS
+
 Ver 1.0:
 - Automatic creation of element(s) from code
 - Custom CSS styles will be supported.
