@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample for Version 1.0</title>
+    <link rel="stylesheet" type="text/css" href="gotShell.ui.css">
+</head>
+<body>
+<div id="DOSShell" class="gotShell"></div>
+<script src="gotShell.v1.js"></script>
+<script>
+    var DOSShell = new gotShell("#FFF123", 42);
+    var divDOSShell = document.getElementById("DOSShell");
+    divDOSShell.innerHTML = DOSShell.defaultColor;
+    // divDOSShell.innerHTML += "<br>" + DOSShell.defaultSpeed;
+</script>
+</body>
+</html>
