@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>gotShell Sample Usage</title>
+    <link rel="stylesheet" type="text/css" href="gotShell.ui.css">
+    <script src="gotShell.js"></script>
+</head>
+<body>
+<button id="Initialize" onclick="start();">Initialize</button>
+<button id="TestType" onclick="react();">Test Type</button><br/>
+<div id="gotShell" class="gotShell"></div><br/><br/>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/gotShell.js"></script>
+<script>
+    /*
+    Initialize the Shell, use the DIV with ID = "gotShell"
+    Set the text speed to 42 milliseconds between each character and set the default text color to yellow
+     */
+    gotShell.initialize("gotShell", 42, "FFF000");
+    function start()
+    {
+        // Types out a string using the default speed and color, with a new line and command prompt
+        gotShell.addString("gotShell Initialized", true, true);
+    }
+
+    function react()
+    {
+        // Types out a string using the BLINK <b:#> tag where # = ms between blinks
+        //      Uses COLOR tag <c:######> where ####### is the HEX color code.
+        //      Uses SPEED tag <s:#> where # = ms between typing out each character
+        //      Color and speed return to normal after end of tag.
+        gotShell.addString("<b:2>-=[ REACT ]=-</b> <c:ffff00>-=[ REACT ]=-</c> <s:125>-=[ REACT ]=-</s> ", true, true);
+    }
+
+
+</script>
+</body>
+</html>
