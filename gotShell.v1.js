@@ -30,6 +30,11 @@ function gotShell(ShellContainerID, setDefaultTextColor, setDefaultTextSpeed, Sh
     // Text Color and Speed Variables.
     var defaultTextColor = setDefaultTextColor || "#FFFFFF";
     var defaultTextSpeed = setDefaultTextSpeed || 0;
+
+    // Size variables -
+    var shellWidth = "640px";
+    var shellHeight = "480px";
+
     // Array values that contain the text to output, or the text being input.
     var textOutQueue = [];
     var textInQueue  = [];
