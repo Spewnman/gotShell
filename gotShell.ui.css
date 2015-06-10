@@ -35,6 +35,37 @@ div.gotShell {
     background-size:            25% 25%;
 }
 
+div.gotShell2 {
+    /* Will wrap text when it hits the end of the DIV like in a "textarea" */
+    word-wrap:          break-word;
+    /* Creates scrollable area */
+    overflow:           auto !important;
+    /* Typical common settings */
+    /* width:              auto;
+    height:             auto; */
+    width:              80px;
+    height:             90px;
+    border:             inset 2px #7cfc00;
+    box-shadow:         10px 10px 5px #888888;
+    padding:            5px;
+    resize:             none;
+    position:           absolute;
+    top:                250px;
+    left:               30px;
+
+    /* colors and fonts and such */
+    background-color:   #000000;
+    color:              #7cfc00;
+    opacity:            0.8;
+    filter:             alpha(opacity=80);
+    font-family:        "Courier New", Courier, monospace;
+    font-weight:        bold;
+    font-size:          1em;
+    -webkit-background-size:    25% 25%;
+    -moz-background-size:       25% 25%;
+    -o-background-size:         25% 25%;
+    background-size:            25% 25%;
+}
 /* *************************************************************************
 Blinking text ability, mainly added for a blinking cursor ability, but
 can be used for text if you are wanting to infuriate users.

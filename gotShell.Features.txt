@@ -1,0 +1,64 @@
+Version 1.0
+
+CONSTRUCTOR
+
+your_object = new gotShell(ElementID, TextColor, TextSpeed, ClassName, ParentID);
+	ElementID:      - REQUIRED (string)
+	                - When ID is an existing ID, that element is used as the container.
+	                - When ID does not exist, a dynamically created DIV with that ID is created.
+	TextColor:      - OPTIONAL (string)
+					- Defaults to "#FFFFFF" if omitted. (White)
+					- Sets the default text color if included.
+	TextSpeed:      - OPTIONAL (integer)
+					- Defaults to 0 (full speed) if omitted.
+					- Sets the default text speed if included.
+	ClassName:      - OPTIONAL (string)
+					- Sets the ClassName for the Element if included.
+					- Primarily used to set the class for a dynamically created element.
+	ParentID:       - OPTIONAL (string)
+					- Defaults to "document" element if omitted.
+					- Used only when creating a dynamic element, sets the parent.
+
+	EXAMPLES:
+	Basic usage create a shell using an existing DIV with ID "theshell"
+					- Use default text color and speed
+		myobj = new gotShell("theshell");
+
+	Dynamically Create a new element for the shell object.
+					- Use default text color and speed
+					- set the parent to use "theshell"
+					- set class to "gotShell_light" to use that CSS element
+		myobj = new gotShell("myNewDiv", null, null, "gotShell_light", "theshell");
+
+	Full usage, creates new element, sets class, and parent for it.
+					- Also set new default text color and speed.
+		myobj = new gotShell("myNewDiv", "#FFF123", 42, "gotShell_dark", "theshell");
+
+PUBLIC METHODS
+
+WriteString(theString, newLine, cmdPrompt);
+	theString       - REQUIRED (string)
+					- The text to be written to the shell screen.
+	newLine         - OPTIONAL (boolean)
+					- Whether or not to include a <br> (new line) at the end of the string.
+					- Defaults to "false"
+	cmdPrompt       - OPTIONAL (boolean)
+					- Whether or not to include the Command Prompt after the string
+					- Adds the command prompt after the new line if newLine = true.
+
+	theString can contain special code tags to change the color or text speed.
+	<c:#######></c> - Text between opening and closing tag will use color specified
+	                - Color is in HEX form
+	                - Example:  <c:#FFF000>Some Text</c>
+	                    "Some Text" will be yellow, everything after and before the tags
+	                    will be the default text color.
+	<b:#></b>       - Text between opening and closing tag will blink every # seconds.
+					- Example:  <b:5>Blinking Text</b>
+						"Blinking Text" will blink every 5 seconds.
+	<s:#></s>       - Text between opening and closing tag will type at # ms per char.
+					- Example:  <s:42>This Text</s>
+						"This Text" will type out one char at a time every 42 milliseconds.
+
+
+
+

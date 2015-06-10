@@ -8,10 +8,15 @@
 <div id="DOSShell" class="gotShell"></div>
 <script src="gotShell.v1.js"></script>
 <script>
-    var DOSShell = new gotShell("#FFF123", 42);
-    var divDOSShell = document.getElementById("DOSShell");
-    divDOSShell.innerHTML = DOSShell.defaultColor;
-    // divDOSShell.innerHTML += "<br>" + DOSShell.defaultSpeed;
+    var DOSShell = new gotShell("DOSShell", "#FFFFFF", 42);
+
+    DOSShell.writeString(DOSShell.getDefaultTextColor());
+    DOSShell.writeString("<br>");
+    DOSShell.writeString(DOSShell.getDefaultTextSpeed());
+    DOSShell.writeString("<br>");
+    DOSShell.writeString(DOSShell.isInitialized);
+    DOSShell.writeString("<br>");
+
 </script>
 </body>
 </html>
