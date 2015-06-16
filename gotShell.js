@@ -113,7 +113,6 @@ var gotShell =
             objDiv.scrollTop = objDiv.scrollHeight;
         }
 
-
         var theTag;
         // if theChar is start of tag, process if new tag or end of tag
         if (theChar == "<") {

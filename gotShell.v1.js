@@ -22,6 +22,8 @@
 // ****************************************************************************
 function gotShell(ShellContainerID, setDefaultTextColor, setDefaultTextSpeed, ShellContainerClass, ShellContainerParent){
     this.isInitialized = false;
+    var isTyping = false;
+    var isTag = false;
 
     // Container variables
     var ContainerID = ShellContainerID;
@@ -30,6 +32,7 @@ function gotShell(ShellContainerID, setDefaultTextColor, setDefaultTextSpeed, Sh
     // Text Color and Speed Variables.
     var defaultTextColor = setDefaultTextColor || "#FFFFFF";
     var defaultTextSpeed = setDefaultTextSpeed || 0;
+    var curTextSpeed = defaultTextSpeed;
 
     // Size variables -
     var shellWidth = "640px";
@@ -38,6 +41,9 @@ function gotShell(ShellContainerID, setDefaultTextColor, setDefaultTextSpeed, Sh
     // Array values that contain the text to output, or the text being input.
     var textOutQueue = [];
     var textInQueue  = [];
+
+    // public variables
+    this.cmdPrompt = "GoT-# ";
 
 // ***** ShellContainerID is NOT optional, if it is null do not initialize. *****
 // If the element with ID = ShellContainerID exists, bind to that element.
@@ -63,13 +69,52 @@ function gotShell(ShellContainerID, setDefaultTextColor, setDefaultTextSpeed, Sh
 
 // Get and Set functions for default text color and speed
     this.getDefaultTextColor = function()        {if(this.isInitialized){return defaultTextColor;} else{return null;}};
-    this.setDefaultTextColor = function(newColor){if(this.isInitialized){defaultTextColor = newColor;}};
+    this.setDefaultTextColor = function(newColor){
+        if(this.isInitialized){
+            defaultTextColor = newColor;
+            ShellContainer.style.color = newColor;
+        }
+    };
     this.getDefaultTextSpeed = function()        {if(this.isInitialized){return defaultTextSpeed;} else{return null;}};
     this.setDefaultTextSpeed = function(newSpeed){if(this.isInitialized){defaultTextSpeed = newSpeed;}};
 
 // METHODS
-    this.writeString = function(theString) {
-        ShellContainer.innerHTML += theString;
+    this.writeString = function(theString, addNewLine, addCmdPrompt) {
+        // Add each character of the string as a new item at the end of the output array.
+        theString = theString.toString();
+        var tmpArray = theString.split("");
+        if(tmpArray.length > 0)  {textOutQueue = textOutQueue.concat(tmpArray);}
+
+        // HTML tags are added to the array as an element instead of being split up.
+        if(addNewLine)      textOutQueue = textOutQueue.concat("<br/>");
+
+        // If adding the command prompt, split it out char by char.
+        if(addCmdPrompt)    textOutQueue = textOutQueue.concat(this.cmdPrompt.split(""));
+
+        if(!isTyping && textOutQueue.length > 0){
+            typeChar(textOutQueue.shift().toString());
+        }
     };
 
+    var typeChar = function(theChar){
+        // first lets scroll the contents of the DIV if the text exceeds the depth of the DIV window
+        ShellContainer.scrollTop = ShellContainer.scrollHeight;
+        // as long as there are characters in the array, keep running this timer to display
+        // a single character at a time.
+        curTimer = setTimeout(function() {
+            if(theChar !== undefined) ShellContainer.innerHTML += theChar;
+            if(textOutQueue.length > 0) {
+                isTyping = true;
+                typeChar(textOutQueue.shift().toString());
+            }
+            else isTyping = false;
+        }, curTextSpeed);
+    };
+
+    this.showShell = function(toShowOrNot){
+        if(toShowOrNot === undefined) toShowOrNot = true;
+        if(toShowOrNot) {ShellContainer.style.display = "";}
+        else {ShellContainer.style.display = "none";}
+    };
+    this.hideShell = function(){this.showShell(false);};
 }

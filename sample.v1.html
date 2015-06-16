@@ -5,18 +5,17 @@
     <link rel="stylesheet" type="text/css" href="gotShell.ui.css">
 </head>
 <body>
-<div id="DOSShell" class="gotShell"></div>
+<div id="DOSShell" class="gotShell"></div><br/>
 <script src="gotShell.v1.js"></script>
+<button onclick="DOSShell.showShell(false)">Hide</button><br>
+<button onclick="DOSShell.showShell()">Show</button><br>
+<button onclick="DOSShell.writeString('Somewhere over the rainbow, rainbow brite', true, true)">Add</button>
 <script>
-    var DOSShell = new gotShell("DOSShell", "#FFFFFF", 42);
-
-    DOSShell.writeString(DOSShell.getDefaultTextColor());
-    DOSShell.writeString("<br>");
-    DOSShell.writeString(DOSShell.getDefaultTextSpeed());
-    DOSShell.writeString("<br>");
-    DOSShell.writeString(DOSShell.isInitialized);
-    DOSShell.writeString("<br>");
-
+    var DOSShell = new gotShell("DOSShell", "#FFFFFF", 0);
+    DOSShell.writeString(DOSShell.getDefaultTextColor(), true);
+    DOSShell.writeString(DOSShell.getDefaultTextSpeed(), true, true);
+    DOSShell.writeString(DOSShell.isInitialized,false,true);
+    DOSShell.writeString("X");
 </script>
 </body>
 </html>
