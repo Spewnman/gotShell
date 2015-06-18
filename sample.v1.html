@@ -9,13 +9,12 @@
 <script src="gotShell.v1.js"></script>
 <button onclick="DOSShell.showShell(false)">Hide</button><br>
 <button onclick="DOSShell.showShell()">Show</button><br>
-<button onclick="DOSShell.writeString('Somewhere over the rainbow, rainbow brite', true, true)">Add</button>
+<button onclick="DOSShell.writeString('Somewhere <c:#FFFFF0>over</c> the <s:1>rainbow, rainbow</s> brite', true, true)">Add</button><br>
 <script>
-    var DOSShell = new gotShell("DOSShell", "#FFFFFF", 0);
-    DOSShell.writeString(DOSShell.getDefaultTextColor(), true);
-    DOSShell.writeString(DOSShell.getDefaultTextSpeed(), true, true);
-    DOSShell.writeString(DOSShell.isInitialized,false,true);
-    DOSShell.writeString("X");
+    var DOSShell = new gotShell("DOSShell", "#FFFFFF", 42);
+    //DOSShell.cmdPrompt = "<s:200>------<b>#</b>> </s>";
+    DOSShell.cmdPrompt = "<c:#ffffff>~> </c>"
+    DOSShell.writeString("", false, true);
 </script>
 </body>
 </html>
